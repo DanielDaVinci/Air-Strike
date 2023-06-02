@@ -17,6 +17,6 @@ public class MainData : ScriptableObject
 [Serializable]
 public struct Amounts
 {
-    [SerializeField] private uint money;
-    [SerializeField] private uint stars;
+    public uint money;
+    public uint stars;
 }

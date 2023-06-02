@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] private PlayerPlane playerPlane;
 
     private Vector3 lastTouchPosition;
     private bool    isTouching;

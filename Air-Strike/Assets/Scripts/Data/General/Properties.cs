@@ -4,45 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Properties
+public struct Properties
 {
     [Header("Basic")]
-    [SerializeField] private float weight;
-    [SerializeField] private float health;
-    [SerializeField] private float moveSpeed;
+    [Min(0)]
+    public float Weight;
+    [Min(0)]
+    public float Health;
+    [Min(0)]
+    public float Shield;
+    [Min(0)]
+    public float MoveSpeed;
     [Header("Combat")]
-    [SerializeField] private float damage;
-    [SerializeField] private float attackSpeed;
-    [SerializeField] private float attackRange;
+    [Min(0)]
+    public float Damage;
+    [Range(0, 1000)]
+    public float AttackSpeed;
 
-
-    public float Weight
+    public static Properties operator + (Properties first, Properties second)
     {
-        get { return weight; }
-    }
+        Properties result = new Properties
+        {
+            Weight      = first.Weight + second.Weight,
+            Health      = first.Health + second.Health,
+            Shield      = first.Shield + second.Shield,
+            MoveSpeed   = first.MoveSpeed + second.MoveSpeed,
+            Damage      = first.Damage + second.Damage,
+            AttackSpeed = first.AttackSpeed + second.AttackSpeed,
+        };
 
-    public float Health
-    {
-        get { return health; }
-    }
-
-    public float MoveSpeed
-    {
-        get { return moveSpeed; }
-    }
-
-    public float Damage
-    {
-        get { return damage; }
-    }
-
-    public float AttackSpeed
-    {
-        get { return attackSpeed; }
-    }
-
-    public float AttackRange
-    {
-        get { return attackRange; }
+        return result;
     }
 }
